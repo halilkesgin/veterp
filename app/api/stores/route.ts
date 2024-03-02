@@ -4,7 +4,7 @@ import { db } from "@/lib/db"
 import { currentUser } from "@/lib/auth"
 
 export async function POST(
-    req: Request
+    req: Request,
 ) {
     try {
         const user = await currentUser()

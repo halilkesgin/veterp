@@ -3,6 +3,7 @@ import StoreSwitcher from "./store-switcher"
 import { currentUser } from "@/lib/auth"
 import { redirect } from "next/navigation"
 import { ModeToggle } from "@/components/mode-toggle"
+import { UserButton } from "./user-button"
 
 export const Navbar = async () => {
     const user = await currentUser()
@@ -23,8 +24,9 @@ export const Navbar = async () => {
                
                 <StoreSwitcher items={stores} />
             </div>
-            <div>
+            <div className="flex items-center gap-x-2 lg:pr-6 pr-0">
                 <ModeToggle />
+                <UserButton />
             </div>
         </div>
     )

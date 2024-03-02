@@ -18,6 +18,8 @@ export const SignUpForm = () => {
 
     const formSchema = z.object({
         name: z.string().min(1),
+        surname: z.string().min(1),
+        phone: z.string().min(1),
         email: z.string().min(1),
         password: z.string().min(1)
     })
@@ -26,6 +28,8 @@ export const SignUpForm = () => {
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
+            surname: "",
+            phone: "",
             email: "",
             password: ""
         }
@@ -35,11 +39,11 @@ export const SignUpForm = () => {
         startTransition(() => {
             register(values)
                 .then(() => {
-                    toast.success("User registered successfully.")
+                    toast.success("Kullanıcı başarıyla kayıt edilmiştir. Lütfen email adresinizi kontrol ediniz.")
                     router.push("/sign-in")
                 })
                 .catch(() => {
-                    toast.error("Something went wrong.")
+                    toast.error("Hay aksi! Bir şeyler ters gitti.")
                 })
         })
     }
@@ -47,20 +51,36 @@ export const SignUpForm = () => {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField 
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>
-                                Name
-                            </FormLabel>
-                            <FormControl>
-                                <Input {...field} disabled={isPending} />
-                            </FormControl>
-                        </FormItem>
-                    )}
-                />
+                <div className="grid lg:grid-cols-2 gap-4">
+                    <FormField 
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>
+                                    İsim
+                                </FormLabel>
+                                <FormControl>
+                                    <Input {...field} disabled={isPending} />
+                                </FormControl>
+                            </FormItem>
+                        )}
+                    />
+                    <FormField 
+                        control={form.control}
+                        name="surname"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>
+                                    Soyisim
+                                </FormLabel>
+                                <FormControl>
+                                    <Input {...field} disabled={isPending} />
+                                </FormControl>
+                            </FormItem>
+                        )}
+                    />
+                </div>
                 <FormField 
                     control={form.control}
                     name="email"
@@ -77,11 +97,25 @@ export const SignUpForm = () => {
                 />
                 <FormField 
                     control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>
+                                Telefon
+                            </FormLabel>
+                            <FormControl>
+                                <Input {...field} disabled={isPending} />
+                            </FormControl>
+                        </FormItem>
+                    )}
+                />
+                <FormField 
+                    control={form.control}
                     name="password"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                                Password
+                                Şifre
                             </FormLabel>
                             <FormControl>
                                 <Input {...field} type="password" disabled={isPending} />
@@ -89,8 +123,13 @@ export const SignUpForm = () => {
                         </FormItem>
                     )}
                 />
-                <Button type="submit" disabled={isPending}>
-                    Submit
+                <Button 
+                    type="submit" 
+                    disabled={isPending}
+                    className="w-full !mt-8"
+                    variant="bulury"
+                >
+                    Kayıt Ol
                 </Button>
             </form>
         </Form>

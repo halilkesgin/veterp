@@ -1,11 +1,11 @@
 import { Shell } from "@/components/shell"
 
-const ProfilePage = () => {
+const StoragePage = () => {
     return (
         <Shell>
-            this is my profile page
+            Hello
         </Shell>
     )
 }
 
-export default ProfilePage
+export default StoragePage

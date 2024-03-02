@@ -32,7 +32,7 @@ export const NavItem = ({ label, icon: Icon, href }: NavItemProps) => {
         >
             <Link href={href}>
                 <div className={cn(
-                    "flex items-center w-full gap-x-2",
+                    "flex items-center gap-x-2",
                     collapsed && "justify-center"
                 )}>
                     {collapsed ? (

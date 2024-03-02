@@ -34,9 +34,9 @@ export const StoreModal = () => {
             setLoading(true)
             const response = await axios.post("/api/stores", values)
             window.location.assign(`/${response.data.id}`)
-            toast.success("Store created.")
+            toast.success("Klinik oluşturuldu.")
         } catch (error) {
-            toast.error("Something went wrong.")
+            toast.error("Hak aksi! Bir şeyler ters gitti.")
         } finally {
             setLoading(false)
         }
@@ -44,8 +44,8 @@ export const StoreModal = () => {
 
     return (
         <Modal
-            title="Create store"
-            description="Add a new store to manage products and categories"
+            title="Klinik Oluştur"
+            description="Veteriner kliniğinizi yönetmek için yeni bir klinik oluşturun."
             isOpen={storeModal.isOpen}
             onClose={storeModal.onClose}
         >
@@ -58,7 +58,7 @@ export const StoreModal = () => {
                                 name="name"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Name</FormLabel>
+                                        <FormLabel>Klinik Adı</FormLabel>
                                         <FormControl>
                                             <Input 
                                                 disabled={loading} 
@@ -70,11 +70,11 @@ export const StoreModal = () => {
                                 )}
                             />
                             <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-                                <Button variant="outline" onClick={storeModal.onClose}>
-                                    Cancel
+                                <Button variant="destructive" onClick={storeModal.onClose}>
+                                    İptal
                                 </Button>
-                                <Button type="submit" disabled={loading}>
-                                    Continue
+                                <Button type="submit" variant="outline" disabled={loading}>
+                                    Oluştur
                                 </Button>
                             </div>
                         </form>

@@ -36,16 +36,16 @@ export const SignInForm = () => {
                 .then((data) => {
                     if (data?.error) {
                         form.reset()
-                        toast.error("Something went wrong.")
+                        toast.error("Hay aksi! Bir şeyler ters gitti.")
                     }
 
                     if (data?.success) {
                         form.reset()
-                        toast.error("Logged successfully.")
+                        toast.error("Giriş başarılı, hoşgeldiniz.")
                     }
                 })
                 .catch(() => {
-                    toast.error("Something went wrong.")
+                    toast.error("Hay aksi! Bir şeyler ters gitti.")
                 })
         })
     }
@@ -73,7 +73,7 @@ export const SignInForm = () => {
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                                Password
+                                Şifre
                             </FormLabel>
                             <FormControl>
                                 <Input {...field} type="password" disabled={isPending} />
@@ -81,11 +81,13 @@ export const SignInForm = () => {
                         </FormItem>
                     )}
                 />
-                <Button
-                    type="submit"
-                    variant="outline"
+                <Button 
+                    type="submit" 
+                    disabled={isPending}
+                    className="w-full !mt-8"
+                    variant="bulury"
                 >
-                    Sign in
+                    Giriş Yap
                 </Button>
             </form>
         </Form>
