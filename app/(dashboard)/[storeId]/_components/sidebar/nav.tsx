@@ -1,7 +1,7 @@
 "use client"
 
 import { useParams } from "next/navigation"
-import { LayoutDashboard, Settings, Warehouse } from "lucide-react"
+import { Box, LayoutDashboard, Settings, Warehouse } from "lucide-react"
 
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
 import { useSidebar } from "@/hooks/use-sidebar"
@@ -27,7 +27,12 @@ export const Nav = () => {
         {
             label: "Depo",
             icon: Warehouse,
-            href: `/${params.storeId}/storage`
+            href: `/${params.storeId}/storages`
+        },
+        {
+            label: "Ürünler",
+            icon: Box,
+            href: `/${params.storeId}/products`
         }
     ]
 

@@ -35,7 +35,7 @@ export const Delete = () => {
                 isOpen={open} 
                 onClose={() => setOpen(false)}
                 onConfirm={onDelete}
-                loading={loading}
+                disabled={loading}
                 />
 
 <Button
