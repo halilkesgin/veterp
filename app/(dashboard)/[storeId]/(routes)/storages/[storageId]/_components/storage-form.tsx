@@ -3,7 +3,7 @@
 import * as z from "zod"
 import { useParams, useRouter } from "next/navigation"
 import { useState } from "react"
-import { Storage } from "@prisma/client"
+import { Prisma, Storage } from "@prisma/client"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { toast } from "sonner"
@@ -34,14 +34,14 @@ export const StorageForm = ({
 
     const formSchema = z.object({
         name: z.string().min(1),
-        piece: z.string().min(1),
+        piece: z.number(),
     })
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: data || {
             name: "",
-            piece: ""
+            piece: 0
         }
     })
 
@@ -90,7 +90,7 @@ export const StorageForm = ({
                             <FormLabel>Depo Stok</FormLabel>
                             <FormControl>
                                 <Input {...field} disabled={isLoading} />
-                            </FormControl>
+                            </FormControl> 
                             <FormMessage />
                         </FormItem>
                     )}

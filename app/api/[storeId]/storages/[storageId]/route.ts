@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 
 import { db } from "@/lib/db"
 import { currentUser } from "@/lib/auth"
+import { checkAvailableSpace } from "@/actions/product"
 
 export async function GET(
     req: Request,
@@ -59,6 +60,14 @@ export async function PATCH(
 
         if (!storeByUserId) {
             return new NextResponse("Unauthorized", { status: 405 })
+        }
+
+        const requestedPieces = parseInt(piece)
+
+        const hasAvailableSpace = await checkAvailableSpace(params.storageId, requestedPieces)
+
+        if (!!hasAvailableSpace) {
+            return new NextResponse("Not enough available space in the storage.", { status: 400 })
         }
 
         const storage = await db.storage.update({

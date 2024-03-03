@@ -110,7 +110,7 @@ model Storage {
     id String @id @default(uuid())
 
     name  String
-    piece String
+    piece Int
 
     storeId String
     store   Store  @relation(fields: [storeId], references: [id], onDelete: Cascade)

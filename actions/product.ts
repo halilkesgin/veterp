@@ -14,7 +14,7 @@ export async function checkAvailableSpace(storageId: string, requestedPieces: nu
         throw new Error("Storage not found.")
     }
 
-    const availableSpace = parseInt(storage.piece) - storage.products.reduce((total, product) => total + parseInt(product.piece), 0)
+    const availableSpace = storage.piece - storage.products.reduce((total, product) => total + parseInt(product.piece), 0)
 
     return availableSpace >= requestedPieces
 }
