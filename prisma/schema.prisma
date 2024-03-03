@@ -126,7 +126,7 @@ model Product {
 
     name  String
     piece String
-    price Decimal
+    price String
 
     storeId String
     store   Store  @relation(fields: [storeId], references: [id], onDelete: Cascade)

@@ -16,6 +16,9 @@ const StoragesPage = async ({
     const storages = await db.storage.findMany({
         where: {
             storeId: params.storeId 
+        },
+        include: {
+            products: true
         }
     })
 
@@ -23,6 +26,7 @@ const StoragesPage = async ({
         id: storage.id,
         name: storage.name,
         piece: storage.piece,
+        availablePiece: (parseInt(storage.piece) - storage.products.reduce((total, product) => total + parseInt(product.piece), 0)).toString(),
         createdAt: format(storage.createdAt, "MMMM")
     }))
 

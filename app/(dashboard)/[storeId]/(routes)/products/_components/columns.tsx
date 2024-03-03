@@ -4,26 +4,21 @@ import { ColumnDef } from "@tanstack/react-table"
 
 import { CellAction } from "./cell-action"
 
-export type StoragesColumn = {
+export type ProductsColumn = {
     id: string
     name: string
     piece: string
-    availablePiece: string
     createdAt: string
 }
 
-export const columns: ColumnDef<StoragesColumn>[] = [
+export const columns: ColumnDef<ProductsColumn>[] = [
     {
         accessorKey: "name",
-        header: "Depo Adı"
+        header: "Ürün Adı"
     },
     {
         accessorKey: "piece",
-        header: "Toplam Alan"
-    },
-    {
-        accessorKey: "availablePiece",
-        header: "Kullanılabilir Alan"
+        header: "Ürün Adet"
     },
     {
         accessorKey: "createdAt",
