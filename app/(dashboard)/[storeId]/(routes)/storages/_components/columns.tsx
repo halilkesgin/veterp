@@ -7,7 +7,7 @@ import { CellAction } from "./cell-action"
 export type StoragesColumn = {
     id: string
     name: string
-    piece: string
+    piece: number
     availablePiece: string
     createdAt: string
 }

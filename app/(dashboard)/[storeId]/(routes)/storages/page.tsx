@@ -26,7 +26,7 @@ const StoragesPage = async ({
         id: storage.id,
         name: storage.name,
         piece: storage.piece,
-        availablePiece: (parseInt(storage.piece) - storage.products.reduce((total, product) => total + parseInt(product.piece), 0)).toString(),
+        availablePiece: (storage.piece - storage.products.reduce((total, product) => total + parseInt(product.piece), 0)).toString(),
         createdAt: format(storage.createdAt, "MMMM")
     }))
 
