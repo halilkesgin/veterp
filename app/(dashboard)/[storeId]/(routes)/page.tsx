@@ -12,7 +12,7 @@ const HomePage = async ({
 
     return (
         <Shell>
-            {store?.name}
+            Selamlar github commit update
         </Shell>
     )
 }
