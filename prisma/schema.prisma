@@ -14,8 +14,13 @@ enum UserRole {
 }
 
 model Store {
-    id   String @id @default(uuid())
-    name String
+    id       String @id @default(uuid())
+    name     String
+    address  String
+    phoneOne String
+    phoneTwo String
+    email    String
+    map      String
 
     userId String
     user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
