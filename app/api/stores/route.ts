@@ -24,6 +24,11 @@ export async function POST(
             data: {
                 name,
                 userId: user?.id,
+                phoneOne: "",
+                phoneTwo: "",
+                address: "",
+                email: "",
+                map: ""
             }
         })
     
