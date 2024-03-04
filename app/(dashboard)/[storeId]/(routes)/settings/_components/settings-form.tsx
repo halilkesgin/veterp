@@ -61,54 +61,54 @@ export const SettingsForm = ({
         }
     }
 
-    return (
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Klinik Adı</FormLabel>
-                            <FormControl>
-                                <Input disabled={isLoading} {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <div className="grid lg:grid-cols-2 gap-4">
+        return (
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                     <FormField
                         control={form.control}
-                        name="phoneOne"
+                        name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Telefon 1</FormLabel>
+                                <FormLabel>Klinik Adı</FormLabel>
                                 <FormControl>
-                                    <Input disabled={isLoading} {...field} value={field.name || ""} />
+                                    <Input disabled={isLoading} {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <FormField
-                        control={form.control}
-                        name="phoneTwo"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Telefon 2</FormLabel>
-                                <FormControl>
-                                    <Input disabled={isLoading} {...field} value={field.name || ""} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    /> 
-                </div>
-                <Button disabled={isLoading} className="ml-auto" type="submit">
-                    Save changes
-                </Button>
-            </form>
-        </Form>
-    )
-}
+                    <div className="grid lg:grid-cols-2 gap-4">
+                        <FormField
+                            control={form.control}
+                            name="phoneOne"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Telefon 1</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={isLoading} {...field} value={field.name || ""} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="phoneTwo"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Telefon 2</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={isLoading} {...field} value={field.name || ""} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+                    <Button disabled={isLoading} className="ml-auto" type="submit">
+                        Save changes
+                    </Button>
+                </form>
+            </Form>
+        )
+    }
