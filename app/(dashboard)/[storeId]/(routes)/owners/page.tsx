@@ -1,20 +1,35 @@
-import { Heading } from "@/components/heading"
+import { format } from "date-fns"
+
 import { Shell } from "@/components/shell"
-import Link from "next/link"
+import { db } from "@/lib/db"
+
+import { OwnersColumn } from "./_components/columns"
+import { OwnersClient } from "./_components/client"
 
 interface OwnersPageProps {
     params: { storeId: string }
 }
 
-const OwnersPage = ({
+const OwnersPage = async ({
     params
 }: OwnersPageProps) => {
+
+    const owners = await db.owner.findMany({
+        where: {
+            storeId: params.storeId
+        }
+    })
+
+    const formattedOwners: OwnersColumn[] = owners.map((owner) => ({
+        id: owner.id,
+        name: owner.name,
+        surname: owner.surname,
+        createdAt: format(owner.createdAt, "MMMM")
+    }))
+
     return (
         <Shell>
-            <Heading title="Sahipler" />
-            <Link href={`/${params.storeId}/owners/new`}>
-                Oluştur
-            </Link>
+            <OwnersClient data={formattedOwners} />
         </Shell>
     )
 }

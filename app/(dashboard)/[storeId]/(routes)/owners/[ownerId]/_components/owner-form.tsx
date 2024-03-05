@@ -52,7 +52,7 @@ export const OwnerForm = ({
         try {
             setIsLoading(true)
             if (data) {
-                // todo: update 
+                axios.patch(`/api/${params.storeId}/owners/${data.id}`, values)
             } else {
                 axios.post(`/api/${params.storeId}/owners`, values)
             }

@@ -19,7 +19,6 @@ export const ModalProvider = () => {
     return (
         <>
             <StoreModal />
-            <PasswordModal />
         </>
     )
 }
