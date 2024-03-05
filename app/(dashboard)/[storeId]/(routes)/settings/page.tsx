@@ -12,7 +12,7 @@ const SettingsPage = async () => {
 
     return (
         <Shell>
-            <Heading title="Settings" />
+            <Heading title="Ayarlar" />
             <SettingsForm data={store} />
         </Shell>
     )

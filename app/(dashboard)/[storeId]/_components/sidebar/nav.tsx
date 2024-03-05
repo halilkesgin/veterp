@@ -20,11 +20,6 @@ export const Nav = () => {
             href: `/${params.storeId}`
         },
         {
-            label: "Ayarlar",
-            icon: Settings,
-            href: `/${params.storeId}/settings`
-        },
-        {
             label: "Depo",
             icon: Warehouse,
             href: `/${params.storeId}/storages`
@@ -33,7 +28,12 @@ export const Nav = () => {
             label: "Ürünler",
             icon: Box,
             href: `/${params.storeId}/products`
-        }
+        },
+        {
+            label: "Ayarlar",
+            icon: Settings,
+            href: `/${params.storeId}/settings`
+        },
     ]
 
     return (
