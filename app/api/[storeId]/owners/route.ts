@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { currentUser } from "@/lib/auth"
 import { db } from "@/lib/db"
+import { createLog } from "@/lib/logs/create"
+import { ACTION, ENTITY_TPYE } from "@prisma/client"
 
 export async function POST(
     req: Request,
@@ -45,6 +47,13 @@ export async function POST(
                 email,
                 storeId: params.storeId
             }
+        })
+
+        await createLog({
+            entityTitle: owner.name,
+            entityId: owner.id,
+            entityType: ENTITY_TPYE.OWNER,
+            action: ACTION.CREATE
         })
 
         return NextResponse.json(owner)

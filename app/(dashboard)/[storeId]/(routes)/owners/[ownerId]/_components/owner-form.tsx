@@ -1,7 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Owner } from "@prisma/client"
+import { Log, Owner } from "@prisma/client"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 import { format } from "date-fns"
@@ -17,13 +17,17 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { CalendarIcon } from "lucide-react"
 import { Calendar } from "@/components/ui/calendar"
+import { SignleLogDetail } from "@/components/logs/single-log-detail"
+import { logMessage } from "@/lib/logs/message"
 
 interface OwnerFormProps {
     data: Owner | null
+    items?: Log[]
 }
 
 export const OwnerForm = ({
-    data
+    data,
+    items
 }: OwnerFormProps) => {
     const router = useRouter()
     const params = useParams()
@@ -174,7 +178,15 @@ export const OwnerForm = ({
                         </Button>
                     </div>
                 </form>
-            </Form> 
+            </Form>
+            <ol className="mt-2 space-y-4">
+                {items?.map((item) => (
+                    <SignleLogDetail
+                        key={item.id}
+                        data={item}
+                    />  
+                ))}
+            </ol>
         </>
 
     )

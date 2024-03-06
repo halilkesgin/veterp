@@ -30,6 +30,7 @@ model Store {
     orders     Order[]
     orderItems OrderItems[]
     owners     Owner[]
+    pets       Pet[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -192,13 +193,43 @@ model Owner {
 }
 
 model Pet {
-    id        String @id @default(uuid())
+    id        String   @id @default(uuid())
     name      String
-    birthDate String
+    birthDate DateTime
+
+    storeId String
+    store   Store  @relation(fields: [storeId], references: [id], onDelete: Cascade)
 
     ownerId String
     owner   Owner  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+}
+
+model Log {
+    id          String      @id @default(uuid())
+    action      ACTION
+    userId      String
+    entityId    String
+    entityType  ENTITY_TPYE
+    entityTitle String
+    name        String
+    surname     String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+enum ACTION {
+    CREATE
+    UPDATE
+    DELETE
+}
+
+enum ENTITY_TPYE {
+    USER
+    STORE
+    PET
+    OWNER
 }
