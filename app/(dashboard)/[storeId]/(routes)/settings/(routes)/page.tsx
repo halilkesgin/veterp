@@ -1,16 +1,26 @@
 import { Shell } from "@/components/shell"
 import { currentStore } from "@/lib/store"
 import { Separator } from "@/components/ui/separator"
+import { currentUser } from "@/lib/auth"
+import { db } from "@/lib/db"
 
 import { SettingsForm } from "./_components/settings-form"
 import { DangerZone } from "./_components/danger-zone"
 
-const SettingsPage = async () => {
-    const store = await currentStore()
+interface SettingsPageProps {
+    params: { storeId: string }
+}
 
-    if (!store) {
-        return null
-    }
+const SettingsPage = async ({
+    params
+}: SettingsPageProps) => {
+    const self = await currentUser()
+
+    const store = await db.store.findUnique({
+        where: {
+            id: params.storeId
+        }
+    })
 
     return (
         <Shell>

@@ -5,6 +5,7 @@ export type ExtendedUser = DefaultSession["user"] & {
     role: UserRole
     phone: User.phone
     surname: User.surname
+    image: User.image
     isTwoFactorEnabled: boolean
     isOAuth: boolean
 }

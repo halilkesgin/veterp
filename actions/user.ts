@@ -39,6 +39,7 @@ export const updateUser = async (
         user: {
             name: updatedUser.name,
             email: updatedUser.email,
+            image: updatedUser.image,
             isTwoFactorEnabled: updatedUser.isTwoFactorEnabled,
             role: updatedUser.role,
         }

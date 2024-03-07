@@ -30,16 +30,16 @@ export const AlertModal: React.FC<AlertModalProps> = ({
 
   return (
     <Modal
-      title="Are you sure?"
-      description="This action cannot be undone."
+      title="Emin misiniz?"
+      description="Bu aksiyon geri alınamaz."
       isOpen={isOpen}
       onClose={onClose}
     >
       <div className="pt-6 space-x-2 flex items-center justify-end w-full">
         <Button disabled={disabled} variant="outline" onClick={onClose}>
-          Cancel
+          İptal
         </Button>
-        <Button disabled={disabled} variant="destructive" onClick={onConfirm}>Continue</Button>
+        <Button disabled={disabled} variant="destructive" onClick={onConfirm}>Devam</Button>
       </div>
     </Modal>
   );

@@ -77,7 +77,7 @@ export const NotificationForm = ({
                         Bildirimler
                     </h1>
                 	<p className="text-sm text-muted-foreground lg:max-w-80">
-                    	Kliğiniz veya veterp sistemi ile ilgili güncellemeleri ya da bildirimlerinizi buradan kontrol edebilirsiniz.
+                    	Kliniğiniz veya veterp sistemi ile ilgili güncellemeleri ya da bildirimlerinizi buradan kontrol edebilirsiniz.
                 	</p>
             	</div>
         	</div>

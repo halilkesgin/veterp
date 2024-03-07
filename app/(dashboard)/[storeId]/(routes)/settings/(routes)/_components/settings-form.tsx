@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ImageIcon, LandPlot, Mail, Phone } from "lucide-react"
+import FileUpload from "@/components/file-upload"
 
 
 interface SettingsFormProps {
@@ -35,6 +36,7 @@ export const SettingsForm = ({
         phoneTwo: z.string(),
         email: z.string(),
         map: z.string(),
+        image: z.string()
 
     })
 
@@ -78,7 +80,25 @@ export const SettingsForm = ({
             <div className="col-span-2">
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                        <FormField
+                            disabled={isLoading}
+                            control={form.control}
+                            name="image"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormControl>
+                                        <FileUpload
+                                            apiEndpoint="storeLogo"
+                                            value={field.value}
+                                            onChange={field.onChange}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                         <div className="grid lg:grid-cols-2 gap-4">
+                            
                             <FormField
                                 control={form.control}
                                 name="name"

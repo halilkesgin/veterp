@@ -22,20 +22,28 @@ import { Input } from "@/components/ui/input"
 import { useCurrentUser } from "@/hooks/use-current-user"
 import { updateUser } from "@/actions/user"
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
+import FileUpload from "@/components/file-upload"
+import { User } from "@prisma/client"
 
-export const ProfileForm = () => {
-    const user = useCurrentUser()
+interface ProfileFormProps {
+    data: User | null
+}
 
+export const ProfileForm = ({
+    data
+}: ProfileFormProps) => {
     const { update } = useSession()
     const [isPending, startTransition] = useTransition()
 
     const form = useForm<z.infer<typeof ProfileSchema>>({
         resolver: zodResolver(ProfileSchema),
+        mode: "onSubmit",
         defaultValues: {
-            name: user?.name || "",
-            surname: user?.surname || "",
-            phone: user?.phone || "",
-            email: user?.email || "",
+            name: data?.name || "",
+            surname: data?.surname || "",
+            phone: data?.phone || "",
+            email: data?.email || "",
+            image: data?.image || ""
         }
     })
 
@@ -71,6 +79,23 @@ export const ProfileForm = () => {
         	<div className="col-span-2">
 				<Form {...form}>
                     <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+                        <FormField
+                            disabled={isPending}
+                            control={form.control}
+                            name="image"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormControl>
+                                        <FileUpload
+                                            apiEndpoint="userImage"
+                                            value={field.value}
+                                            onChange={field.onChange}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                         <div className="grid lg:grid-cols-2 gap-4">
                             <FormField
                                 control={form.control}
@@ -114,6 +139,7 @@ export const ProfileForm = () => {
                                         <FormLabel>Email</FormLabel>
                                         <FormControl>
                                             <Input
+                                                readOnly
                                                 {...field}
                                                 disabled={isPending}
                                             />

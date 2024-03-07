@@ -28,7 +28,8 @@ export async function POST(
                 phoneTwo: "",
                 address: "",
                 email: "",
-                map: ""
+                map: "",
+                image: ""
             }
         })
     

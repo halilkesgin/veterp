@@ -5,6 +5,7 @@ export const ProfileSchema = z.object({
     surname: z.optional(z.string()),
     phone: z.optional(z.string()),
     email: z.optional(z.string().email()),
+    image: z.string()
 })
 
 export const PasswordSchema = z.object({

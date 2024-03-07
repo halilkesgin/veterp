@@ -75,6 +75,7 @@ export const {
                 session.user.name = token.name
                 session.user.surname = token.surname
                 session.user.phone = token.phone
+                session.user.image = token.image
                 session.user.email = token.email
                 session.user.isOAuth = token.isOAuth as boolean
             }
@@ -102,6 +103,7 @@ export const {
             token.surname = existingUser.surname
             token.phone = existingUser.phone
             token.email = existingUser.email
+            token.image = existingUser.image
             token.role = existingUser.role
             token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled
             return token

@@ -17,6 +17,7 @@ model Store {
     id       String @id @default(uuid())
     name     String
     address  String
+    image    String
     phoneOne String
     phoneTwo String
     email    String
