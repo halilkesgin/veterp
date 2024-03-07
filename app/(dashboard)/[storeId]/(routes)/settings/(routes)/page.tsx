@@ -1,7 +1,9 @@
 import { Shell } from "@/components/shell"
-import { Heading } from "@/components/heading"
 import { currentStore } from "@/lib/store"
+import { Separator } from "@/components/ui/separator"
+
 import { SettingsForm } from "./_components/settings-form"
+import { DangerZone } from "./_components/danger-zone"
 
 const SettingsPage = async () => {
     const store = await currentStore()
@@ -12,8 +14,9 @@ const SettingsPage = async () => {
 
     return (
         <Shell>
-            <Heading title="Ayarlar" />
             <SettingsForm data={store} />
+            <Separator />
+            <DangerZone />
         </Shell>
     )
 }

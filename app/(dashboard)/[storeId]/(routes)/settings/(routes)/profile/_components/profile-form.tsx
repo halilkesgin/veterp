@@ -57,21 +57,19 @@ export const ProfileForm = () => {
     }
 
     return (
-        <div className="grid lg:grid-cols-4 gap-4">
+        <div className="grid lg:grid-cols-3 gap-4">
             <div className="col-span-1">
-                <Card>
-                    <CardHeader className="flex items-center justify-center">
-                        <div className="flex items-center justify-center h-[100px] w-[100px] rounded-lg border">
-                            <ImageIcon className="h-5 w-5" />
-                        </div>
-                        <CardTitle className="text-lg font-semibold">
-                            {user?.name || ""} {user?.surname || ""}
-                        </CardTitle>
-                    </CardHeader>
-                </Card>
-            </div>
-            <div className="col-span-3">
-                <Form {...form}>
+                <div className="flex flex-col gap-1">
+                    <h1 className="font-semibold">
+                        Profil Bilgileri
+                    </h1>
+                	<p className="text-sm text-muted-foreground lg:max-w-80">
+                    	Profile bilgilerinizi eksiksiz doldurunuz. Unutmayın bu bilgiler sizinle iletişim halinde kalmamızı sağlayacaktır.
+                	</p>
+            	</div>
+        	</div>
+        	<div className="col-span-2">
+				<Form {...form}>
                     <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
                         <div className="grid lg:grid-cols-2 gap-4">
                             <FormField
@@ -141,14 +139,12 @@ export const ProfileForm = () => {
                                 )}
                             />
                         </div>
-                        <div className="flex justify-end">
-                            <Button disabled={isPending} variant="outline" type="submit">
-                                Kaydet
-                            </Button>
-                        </div>
+                        <Button disabled={isPending} size="sm" variant="bulury" type="submit">
+                            Kaydet
+                        </Button>
                     </form>
                 </Form>
-            </div>
-        </div>
+			</div>
+		</div>
     )
 }
