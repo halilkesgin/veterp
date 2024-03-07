@@ -26,12 +26,14 @@ model Store {
     userId String
     user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    storages   Storage[]
-    products   Product[]
-    orders     Order[]
-    orderItems OrderItems[]
-    owners     Owner[]
-    pets       Pet[]
+    storages         Storage[]
+    products         Product[]
+    orders           Order[]
+    orderItems       OrderItems[]
+    owners           Owner[]
+    pets             Pet[]
+    petCategories    PetCategory[]
+    petSubCategories PetSubCategory[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -203,6 +205,33 @@ model Pet {
 
     ownerId String
     owner   Owner  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model PetCategory {
+    id   String @id @default(uuid())
+    name String
+
+    storeId String
+    store   Store  @relation(fields: [storeId], references: [id], onDelete: Cascade)
+
+    petSubCategories PetSubCategory[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model PetSubCategory {
+    id   String @id @default(uuid())
+    name String
+
+    storeId String
+    store   Store  @relation(fields: [storeId], references: [id], onDelete: Cascade)
+
+    petCategoryId String
+    petCategory   PetCategory @relation(fields: [petCategoryId], references: [id], onDelete: Cascade)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

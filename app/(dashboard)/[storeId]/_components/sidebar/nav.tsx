@@ -1,7 +1,7 @@
 "use client"
 
 import { useParams } from "next/navigation"
-import { Box, Cat, LayoutDashboard, Settings, Users2Icon, Warehouse } from "lucide-react"
+import { Box, Cat, LayoutDashboard, Rabbit, Settings, Users2Icon, Warehouse } from "lucide-react"
 
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
 import { useSidebar } from "@/hooks/use-sidebar"
@@ -40,6 +40,11 @@ export const Nav = () => {
             href: `/${params.storeId}/pets`
         },
         {
+            label: "Türler",
+            icon: Rabbit,
+            href: `/${params.storeId}/pet-categories`
+        },
+        {
             label: "Ayarlar",
             icon: Settings,
             href: `/${params.storeId}/settings`
@@ -52,9 +57,9 @@ export const Nav = () => {
                 {!collapsed && (
                     <CommandInput placeholder="Arama..." />
                 )}
-                <CommandList>
+                <CommandList className="min-h-screen">
                     <CommandEmpty>Sonuç bulunamadı.</CommandEmpty>
-                    <CommandGroup className="mt-2">
+                    <CommandGroup>
                         <div className="space-y-1 px-2">
                             {mainRoutes.map((route) => (
                                 <CommandItem key={route.href} className={cn(
