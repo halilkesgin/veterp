@@ -11,7 +11,7 @@ export async function POST(
         const user = await currentUser()
         const body = await req.json()
 
-        const { name, birthDate, ownerId } = body
+        const { name, birthDate, ownerId, kindId, genId } = body
 
         if (!user) {
             return new NextResponse("Unauthorized.", { status: 403 })
@@ -29,6 +29,13 @@ export async function POST(
             return new NextResponse("Owner id is required.", { status: 400 })
         }
 
+        if (!kindId) {
+            return new NextResponse("Kind id is required.", { status: 400 })
+        }
+        if (!genId) {
+            return new NextResponse("Gen id required.", { status: 400 })
+        }
+
         if (!params.storeId) {
             return new NextResponse("Store id is required.", { status: 400 })
         }
@@ -38,6 +45,8 @@ export async function POST(
                 name,
                 birthDate,
                 ownerId,
+                kindId,
+                genId,
                 storeId: params.storeId
             }
         })

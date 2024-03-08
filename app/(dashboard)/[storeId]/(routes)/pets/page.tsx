@@ -18,14 +18,18 @@ const PetsPage = async ({
             storeId: params.storeId 
         },
         include: {
-            owner: true
+            owner: true,
+            kind: true,
+            gen: true
         }
     })
 
     const formattedPets: PetsColumn[] = pets.map((pet) => ({
         id: pet.id,
         name: pet.name,
-        ownerId: pet.owner.id,
+        ownerId: pet.owner.name,
+        kindId: pet.kind.name,
+        genId: pet.gen.name,
         createdAt: format(pet.createdAt, "MMMM")
     }))
 

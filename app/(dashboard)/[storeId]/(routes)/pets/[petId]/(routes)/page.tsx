@@ -1,5 +1,6 @@
 import { db } from "@/lib/db"
 import { PetForm } from "./_components/pet-form"
+import { Shell } from "@/components/shell"
 
 interface PetsIdPageProps {
     params: { storeId: string, petId: string }
@@ -14,7 +15,8 @@ const PetIdPage = async ({
             id: params.petId
         },
         include: {
-            owner: true
+            owner: true,
+            gen: true
         }
     })
 
@@ -24,10 +26,30 @@ const PetIdPage = async ({
         }
     })
 
+    const kinds = await db.kind.findMany({
+        where: {
+            storeId: params.storeId,
+        }
+    })
+
+    const gens = await db.gen.findMany({
+        where: {
+            storeId: params.storeId
+        },
+        include: {
+            kind: true
+        }
+    })
+
     return (
-        <div>
-            <PetForm data={pet} owner={owners} />
-        </div>
+        <Shell>
+            <PetForm 
+                data={pet} 
+                owners={owners}
+                kinds={kinds}
+                gens={gens}
+            />
+        </Shell>
     )
 }
 

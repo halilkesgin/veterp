@@ -2,9 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation"
 
-import { Button } from "@/components/ui/button"
-import { DataTable } from "@/components/ui/data-table"
-import { Heading } from "@/components/heading"
+import { DataTable } from "@/components/data-table"
 
 import { columns, PetsColumn } from "./columns"
 
@@ -15,22 +13,21 @@ interface PetsColumnProps {
 export const PetsClient= ({ 
     data 
 }: PetsColumnProps) => {
-    const params = useParams()
-    const router = useRouter()
-
     return (
-        <>
-            <div className="flex justify-between gap-4">
-                <Heading title="Depo" description="Deponuza ürün ekleyin." />
-                <Button 
-                    size="sm" 
-                    onClick={() => router.push(`/${params.storeId}/pets/new`)} 
-                    variant="outline"
-                >
-                    Yeni Ürün
-                </Button>
+        <div className="grid lg:grid-cols-3 gap-4">
+            <div className="col-span-1">
+                <div className="flex flex-col gap-1">
+                    <h1 className="font-semibold">
+                        Petler
+                    </h1>
+                	<p className="text-sm text-muted-foreground lg:max-w-80">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. A obcaecati debitis corrupti accusamus labore consequatur.
+                	</p>
+            	</div>
+        	</div>
+            <div className="col-span-2">
+                <DataTable searchKey="name" link="pets" columns={columns} data={data} />
             </div>
-            <DataTable searchKey="name" columns={columns} data={data} />
-        </>
+        </div>
     )
 }

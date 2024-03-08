@@ -21,7 +21,7 @@ const HomePage = async ({
     return (
         <Shell>
             <div className="flex-col">
-                <div className="flex-1 space-y-4 p-8 pt-6">
+                {/* <div className="flex-1 space-y-4 p-8 pt-6">
                     <Heading title="Dashboard" />
                     <div className="grid gap-4 grid-cols-3">
                         <Card>
@@ -126,7 +126,8 @@ const HomePage = async ({
                         </div>
 
                     </div>
-                </div>
+                </div> */}
+                Dashboard
             </div>
         </Shell>
     )

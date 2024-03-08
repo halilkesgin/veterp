@@ -8,6 +8,8 @@ export type PetsColumn = {
     id: string
     name: string
     ownerId: string
+    kindId: string
+    genId: string
     createdAt: string
 }
 
@@ -18,7 +20,15 @@ export const columns: ColumnDef<PetsColumn>[] = [
     },
     {
         accessorKey: "ownerId",
-        header: "Sahip ID"
+        header: "Sahip ID",
+    },
+    {
+        accessorKey: "kindId",
+        header: "Tür"
+    },
+    {
+        accessorKey: "genId",
+        header: "Cins"
     },
     {
         accessorKey: "createdAt",

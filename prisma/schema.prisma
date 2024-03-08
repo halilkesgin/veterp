@@ -206,6 +206,12 @@ model Pet {
     ownerId String
     owner   Owner  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
+    kindId String
+    kind   Kind   @relation(fields: [kindId], references: [id], onDelete: Cascade)
+
+    genId String
+    gen   Gen    @relation(fields: [genId], references: [id], onDelete: Cascade)
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
@@ -218,6 +224,7 @@ model Kind {
     store   Store  @relation(fields: [storeId], references: [id], onDelete: Cascade)
 
     gens Gen[]
+    pets Pet[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -235,6 +242,8 @@ model Gen {
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    pets Pet[]
 }
 
 model Log {
