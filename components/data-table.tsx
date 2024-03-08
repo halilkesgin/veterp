@@ -28,11 +28,13 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[],
   searchKey: string;
+  link?: string
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  link,
   searchKey,
 }: DataTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -52,7 +54,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex justify-between items-center py-4">
+      <div className="flex justify-between items-center py-4 gap-4">
         <Input
           placeholder="Arama..."
           value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ""}
@@ -61,7 +63,7 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
-        <Link href={`/${params.storeId}/pet-categories/new`} className={buttonVariants({ size: "sm", variant: "outline"})}>
+        <Link href={`/${params.storeId}/${link}/new`} className={buttonVariants({ size: "sm", variant: "outline"})}>
             Yeni Oluştur
         </Link>
       </div>

@@ -42,7 +42,7 @@ export const Nav = () => {
         {
             label: "Türler",
             icon: Rabbit,
-            href: `/${params.storeId}/pet-categories`
+            href: `/${params.storeId}/kinds`
         },
         {
             label: "Ayarlar",

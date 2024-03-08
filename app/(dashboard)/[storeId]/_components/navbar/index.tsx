@@ -1,8 +1,10 @@
-import { db } from "@/lib/db"
-import StoreSwitcher from "./store-switcher"
-import { currentUser } from "@/lib/auth"
 import { redirect } from "next/navigation"
+
+import { db } from "@/lib/db"
 import { ModeToggle } from "@/components/mode-toggle"
+import { currentUser } from "@/lib/auth"
+
+import StoreSwitcher from "./store-switcher"
 import { UserButton } from "./user-button"
 
 export const Navbar = async () => {
@@ -21,7 +23,6 @@ export const Navbar = async () => {
     return (
         <div className="fixed top-0 w-full h-16 z-[49] bg-background px-2 lg:px-4 flex justify-between items-center border-b">
             <div className="flex lg:gap-x-32 gap-x-4 items-center">
-               
                 <StoreSwitcher items={stores} />
             </div>
             <div className="flex items-center gap-x-2 lg:pr-6 pr-0">

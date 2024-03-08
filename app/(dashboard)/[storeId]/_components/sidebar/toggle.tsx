@@ -7,8 +7,6 @@ import { useSidebar } from "@/hooks/use-sidebar"
 import { Hint } from "@/components/hint"
 import { Skeleton } from "@/components/ui/skeleton"
 
-
-
 export const Toggle = () => {
     const { collapsed, onExpand, onCollapse } = useSidebar((state) => state)
 

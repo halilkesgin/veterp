@@ -4,16 +4,16 @@ import { ColumnDef } from "@tanstack/react-table"
 
 import { CellAction } from "./cell-action"
 
-export type PetCategoriesColumn = {
+export type KindsColumn = {
     id: string
     name: string
     createdAt: string
 }
 
-export const columns: ColumnDef<PetCategoriesColumn>[] = [
+export const columns: ColumnDef<KindsColumn>[] = [
     {
         accessorKey: "name",
-        header: "Ürün Adı"
+        header: "Tür Adı"
     },
     {
         header: "İşlemler",

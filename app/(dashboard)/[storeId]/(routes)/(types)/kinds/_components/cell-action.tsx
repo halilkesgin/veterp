@@ -9,10 +9,10 @@ import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { AlertModal } from "@/components/ui/alert-modal"
 
-import { PetCategoriesColumn } from "./columns"
+import { KindsColumn } from "./columns"
 
 interface CellActionProps {
-    data: PetCategoriesColumn
+    data: KindsColumn
 }
 
 export const CellAction = ({ 
@@ -26,7 +26,7 @@ export const CellAction = ({
     const onDelete = async () => {
         try {
             setIsLoading(true)
-            toast.success("Kategori silindi.")
+            toast.success("Depo silindi.")
             router.refresh()
         } catch (error) {
             toast.error("Hay aksi! Bir şeyler ters gitti.")
@@ -48,9 +48,9 @@ export const CellAction = ({
                 <Button 
                     variant="outline" 
                     size="icon"
-                    onClick={() => router.push(`/${params.storeId}/pet-categories/${data.id}`)}
+                    onClick={() => router.push(`/${params.storeId}/kinds/${data.id}`)}
                 >
-                    <Edit className="w-4 h-4" /> 11
+                    <Edit className="w-4 h-4" /> 
                 </Button>
                 <Button 
                     variant="destructive"

@@ -11,11 +11,11 @@ export const Navbar = () => {
     const routes = [
         {
             label: "Türler",
-            href: `/${params.storeId}/pet-categories`
+            href: `/${params.storeId}/kinds`
         },
         {
             label: "Cinsler",
-            href: `/${params.storeId}/pet-categories/sub-categories`
+            href: `/${params.storeId}/gens`
         },
     ]
 

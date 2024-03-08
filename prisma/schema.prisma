@@ -26,14 +26,14 @@ model Store {
     userId String
     user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    storages         Storage[]
-    products         Product[]
-    orders           Order[]
-    orderItems       OrderItems[]
-    owners           Owner[]
-    pets             Pet[]
-    petCategories    PetCategory[]
-    petSubCategories PetSubCategory[]
+    storages   Storage[]
+    products   Product[]
+    orders     Order[]
+    orderItems OrderItems[]
+    owners     Owner[]
+    pets       Pet[]
+    kinds      Kind[]
+    gens       Gen[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -210,28 +210,28 @@ model Pet {
     updatedAt DateTime @updatedAt
 }
 
-model PetCategory {
+model Kind {
     id   String @id @default(uuid())
     name String
 
     storeId String
     store   Store  @relation(fields: [storeId], references: [id], onDelete: Cascade)
 
-    petSubCategories PetSubCategory[]
+    gens Gen[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
 
-model PetSubCategory {
+model Gen {
     id   String @id @default(uuid())
     name String
 
     storeId String
     store   Store  @relation(fields: [storeId], references: [id], onDelete: Cascade)
 
-    petCategoryId String
-    petCategory   PetCategory @relation(fields: [petCategoryId], references: [id], onDelete: Cascade)
+    kindId String
+    kind   Kind   @relation(fields: [kindId], references: [id], onDelete: Cascade)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
